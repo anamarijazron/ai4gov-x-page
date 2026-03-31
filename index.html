@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EFRI u projektu AI4Gov-X | Ekonomski fakultet Sveučilišta u Rijeci</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --efri-blue:    #003B7A;
+      --efri-light:   #1565C0;
+      --ai4g-blue:    #0D6ECC;
+      --ai4g-teal:    #00A9CE;
+      --text-dark:    #1a1a2e;
+      --text-mid:     #3d4560;
+      --text-light:   #6b7280;
+      --bg-page:      #f5f7fa;
+      --bg-white:     #ffffff;
+      --accent:       #E8F4FF;
+      --border:       #dbe4f0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #002A5C 0%, #004D9A 55%, #006DB5 100%);
+      padding: 56px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(0,169,206,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 90%, rgba(21,101,192,.25) 0%, transparent 70%);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* logo bar */
+    .logo-bar {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .logo-efri {
+      background: white;
+      border-radius: 8px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-efri-icon {
+      width: 36px; height: 36px;
+      background: var(--efri-blue);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-efri-icon svg { width: 22px; height: 22px; fill: white; }
+    .logo-efri-text { font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--efri-blue); line-height: 1.2; }
+
+    .logo-sep { color: rgba(255,255,255,0.35); font-size: 1.4rem; font-weight: 300; }
+
+   .logo-ai4g {
+  background: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+}
+    .ai4g-icon {
+      width: 32px; height: 32px;
+      background: var(--ai4g-teal);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ai4g-icon svg { width: 20px; height: 20px; fill: white; }
+    .logo-ai4g-text { font-weight: 700; font-size: 0.9rem; color: white; letter-spacing: .5px; }
+    .logo-ai4g-sub { font-size: 0.65rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 1px; }
+
+    .eu-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 12px;
+      color: rgba(255,255,255,.75);
+      font-size: 0.72rem;
+    }
+    .eu-stars { font-size: 1rem; }
+
+    /* meta */
+    .hero-meta {
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .tag-project { background: var(--ai4g-teal); color: #003B7A; }
+    .tag-digital { background: rgba(255,255,255,0.15); color: rgba(255,255,255,.85); }
+    .tag-eu { background: rgba(255,255,255,0.1); color: rgba(255,255,255,.7); }
+
+    .hero-date { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+
+    /* title */
+    .hero-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+    .hero-title em { font-style: italic; color: var(--ai4g-teal); }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 680px;
+      line-height: 1.65;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--efri-blue);
+      padding: 0;
+    }
+    .stats-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat {
+      padding: 18px 24px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      text-align: center;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Lora', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--ai4g-teal);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.72rem; color: rgba(255,255,255,.6); margin-top: 4px; text-transform: uppercase; letter-spacing: .8px; }
+
+    /* ── ARTICLE ── */
+    .article-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    .article-body {
+      background: var(--bg-white);
+      border-radius: 0 0 12px 12px;
+      padding: 40px 48px;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+
+    .article-body h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--efri-blue);
+      margin: 32px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .article-body h2:first-child { margin-top: 0; }
+
+    .article-body p {
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    .highlight-box {
+      background: var(--accent);
+      border-left: 4px solid var(--ai4g-blue);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-style: italic;
+      color: var(--efri-blue);
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .key-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0 24px;
+    }
+    .kp {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #f8fafd;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .kp-dot {
+      width: 8px; height: 8px;
+      background: var(--ai4g-teal);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .kp p { margin: 0; font-size: 0.88rem; color: var(--text-mid); }
+
+    .cta-box {
+      background: linear-gradient(120deg, #002A5C 0%, #004D9A 100%);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cta-text { color: rgba(255,255,255,.85); font-size: 0.95rem; }
+    .cta-text strong { color: white; display: block; font-size: 1.05rem; margin-bottom: 4px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--ai4g-teal);
+      color: var(--efri-blue);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: .5px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+    .cta-btn:hover { opacity: .88; }
+
+    .article-footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .article-author { font-size: 0.82rem; color: var(--text-light); }
+    .article-author strong { color: var(--text-mid); }
+    .eu-funding {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; color: var(--text-light);
+    }
+    .eu-flag { font-size: 1.1rem; }
+
+    @media (max-width: 640px) {
+      .article-body { padding: 28px 22px; }
+      .key-points { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .logo-bar { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-inner">
+
+      <!-- EFRI logo  -->
+    <div class="logo-bar">
+      <div class="logo-efri">
+        <a href="https://www.efri.uniri.hr/en" target="_blank" rel="noopener">
+  <img src="Images/Rijeka logo.png" alt="EFRI logo" style="height:40px;">
+</div>
+</a>
+      <span class="logo-sep">×</span>
+
+      <!-- AI4Gov-X logo-->
+      <div class="logo-ai4g">
+        <a href="https://ai4gov-x.eu/" target="_blank" rel="noopener">
+  <img src="Images/Main logo with EU emblem.jpg" alt="AI4Gov-X logo" style="height:40px;">
+</div>
+</a>
+</div> 
+  
+
+    <div class="hero-meta">
+      <span class="tag tag-project">EU projekt</span>
+      <span class="tag tag-digital">Digitalna transformacija</span>
+      <span class="tag tag-eu">Digital Europe Programme</span>
+      <span class="hero-date">Rijeka, travanj 2026.</span>
+    </div>
+
+    <h1 class="hero-title">
+      EFRI aktivno sudjeluje u europskom projektu <em>AI4Gov-X</em>: digitalne vještine za javnu upravu budućnosti
+    </h1>
+
+    <p class="hero-lead">
+      Ekonomski fakultet Sveučilišta u Rijeci partner je u projektu AI4Gov-X – ambicioznoj europskoj inicijativi koja javnim službenicima pruža napredne digitalne kompetencije potrebne za vođenje transformacije državne uprave.
+    </p>
+
+  </div>
+</div>
+
+<!-- ═══════════ STATS ═══════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">38</div>
+      <div class="stat-label">partnera iz 20 zemalja EU</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">800+</div>
+      <div class="stat-label">planiranih polaznika programa</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4 god.</div>
+      <div class="stat-label">trajanje Digital Europe projekta</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ARTICLE ═══════════ -->
+<div class="article-wrap">
+  <div class="article-body">
+
+    <h2>Projekt koji mijenja način obrazovanja javnih službenika</h2>
+
+    <p>
+      Ekonomski fakultet Sveučilišta u Rijeci (EFRI) aktivno sudjeluje u projektu <strong>AI4Gov-X – Accelerate</strong>, četverogodišnjem projektu financiranom u okviru programa <em>Digital Europe</em> Europske unije. Projekt okuplja konzorcij od <strong>38 organizacija iz 20 europskih zemalja</strong> s ciljem izgradnje održivog, pan-europskog modela obrazovanja za digitalnu transformaciju javne uprave.
+    </p>
+
+    <p>
+      Središnji produkt projekta je obrazovni paket <strong>MAGIX</strong> – modularna i fleksibilna obrazovna ponuda koja civilnim službenicima i javnim profesionalcima pruža praktična znanja iz područja umjetne inteligencije, upravljanja podacima i digitalne transformacije. Tečajevi su oblikovani tako da polaznici mogu učiti uz profesionalne obveze, a uspješnim završetkom stječu akreditirane kredencijale koji se mogu akumulirati prema punoj razini sveučilišnog studija.
+    </p>
+
+    <div class="highlight-box">
+      „Digitalna transformacija u javnoj upravi propada kada znanje ostaje teorijsko ili fragmentirano. AI4Gov-X fokusira se na upotrebljive kompetencije – ljude koji mogu preuzeti odgovornost za stvarne usluge, stvarne podatke i stvarne odluke."
+    </div>
+
+    <h2>EFRI na EFRI Gospodarskom forumu 2026.</h2>
+
+    <p>
+      Projekt je posebno istaknut na <strong>EFRI Gospodarskom forumu 2026.</strong>, jednom od važnijih gospodarskih događanja u Rijeci, koji je privukao medijsku pozornost na regionalnoj i nacionalnoj razini. Doc. dr. sc. Ivan Gržeta, docent i koordinator projekta na EFRI-ju, u svom je izlaganju detaljno predstavio ciljeve, dosadašnji napredak i relevantnost projekta za hrvatsku javnu upravu.
+    </p>
+
+    <p>
+      Forum je bio izvrsna prilika da se stručnoj i poslovnoj zajednici prikaže kako napredna digitalna edukacija može biti direktan odgovor na potrebe lokalne, regionalne i nacionalne javne uprave. Projekt AI4Gov-X pritom se ističe ne samo kao akademski program, već kao <strong>strateški alat za jačanje administrativnih kapaciteta</strong> koji je usklađen s ciljevima EU Digital Decade 2030.
+    </p>
+
+    <h2>Što AI4Gov-X donosi javnoj upravi?</h2>
+
+    <div class="key-points">
+      <div class="kp">
+        <div class="kp-dot"></div>
+        <p>Primijenjeno učenje o AI-u i podacima unutar pravnih i procesnih okvira javne uprave</p>
+      </div>
+      <div class="kp">
+        <div class="kp-dot"></div>
+        <p>Modularne cjeline prilagođene profesionalnim obvezama – bez dugih odsutnosti s posla</p>
+      </div>
+      <div class="kp">
+        <div class="kp-dot"></div>
+        <p>Zajednički jezik i razumijevanje između politike, IT-a, prava i uslužnih jedinica</p>
+      </div>
+      <div class="kp">
+        <div class="kp-dot"></div>
+        <p>Fleksibilni obrazovni moduli koji se mogu kombinirati i postupno nadograđivati</p>
+      </div>
+      <div class="kp">
+        <div class="kp-dot"></div>
+        <p>Pristup europskoj mreži sličnih administracija i usporedivih primjera iz prakse</p>
+      </div>
+      <div class="kp">
+        <div class="kp-dot"></div>
+        <p>Veća kontrola digitalnih projekata i manji oslonac na vanjske konzultante</p>
+      </div>
+    </div>
+
+    <h2>Uloga EFRI-ja i doprinos projektu</h2>
+
+    <p>
+      Kao jedan od partnera u konzorciju, EFRI doprinosi razvoju obrazovnih sadržaja, provođenju primijenjenih modula te umrežavanju s lokalnim i regionalnim dionicima.
+    </p>
+
+    <p>
+      U narednom periodu planiraju se dodatne aktivnosti: razne radionice, izravna suradnja s regionalnim tijelima uprave te integracija projektnih sadržaja u postojeće studijske programe EFRI-ja. Cilj je izgraditi lokalnu stručnost koja će dugoročno ojačati digitalnu transformaciju javnih usluga.
+    </p>
+
+    <p>
+      Projekt AI4Gov-X usklađen je s ključnim europskim strateškim dokumentima, uključujući ciljeve <strong>Digital Decade 2030</strong> i doprinos postizanju cilja od 20 milijuna ICT stručnjaka u EU-u, s posebnim naglaskom na javni sektor. Obrazovni materijali bit će dostupni i nakon završetka projekta putem platforme <em>Digital Skills and Jobs Platform</em>.
+    </p>
+
+    <div class="cta-box">
+      <div class="cta-text">
+        <strong>Saznajte više o projektu AI4Gov-X</strong>
+        Posjetite službenu projektnu stranicu za informacije o programima, partnerima i mogućnostima sudjelovanja.
+      </div>
+      <a href="https://ai4gov-x.eu" target="_blank" rel="noopener" class="cta-btn">
+        Posjetite ai4gov-x.eu →
+      </a>
+    </div>
+
+    <div class="article-footer">
+      <div class="eu-funding">
+        <span class="eu-flag">🇪🇺</span>
+        Projekt AI4Gov-X sufinancira Europska unija<br>u okviru programa Digital Europe
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
